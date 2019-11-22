@@ -109,8 +109,8 @@ $nginx_cnf && make && make install && echo "nginx install completed"
 
 waiting mysql
 yum -y install libaio*
+wget $wget_cnf $mysql_url && tar -xf mysql*tar.gz && rm -rf mysql*tar.gz && mysql_name=`ls | grep mysql`
 cd $init_dir
-mysql_name=`ls | grep mysql`
 mv $mysql_name  $install_dir
 cd $install_dir/$mysql_name
 mysql_cnf="bin/mysqld --initialize-insecure --user=mysql --basedir=$install_dir/$mysql_name --datadir=$install_dir/$mysql_name/data"

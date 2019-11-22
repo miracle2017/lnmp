@@ -21,9 +21,10 @@ fi
 if ! id mysql &> /dev/null ; then
     useradd -r -s /bin/false mysql
 fi
+#common part
 
 mysql_url="https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.28-linux-glibc2.12-x86_64.tar.gz"
-
+wget $wget_cnf $mysql_url && tar -xf mysql*tar.gz && rm -rf mysql*tar.gz && mysql_name=`ls | grep mysql`
 yum -y install libaio*
 cd $init_dir
 mysql_name=`ls | grep mysql`
