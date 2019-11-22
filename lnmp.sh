@@ -1,5 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
+#init config
 init_dir=`pwd`
 echo $init_dir
 install_dir=/usr/local
@@ -59,7 +60,6 @@ if ! id www &> /dev/null ; then
     useradd -r -s /bin/false www
 fi
 
-
 if ! id mysql &> /dev/null ; then
     useradd -r -s /bin/false mysql
 fi
@@ -93,14 +93,12 @@ $php_cnf && make && make install && echo "php install completed"
 php_ver=`echo $php_name | sed 's/[^*0-9.]//g;s/\.[0-9]*$//g'`
 cp php.ini-production $install_dir/$php_name/etc/php.ini
 cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm$php_ver && cd /etc/init.d/  && chmod u+x php-fpm$php_ver
-
 cd $install_dir/$php_name/etc
 cp php-fpm.conf.default php-fpm.conf
 cd php-fpm.d
 cp www.conf.default www.conf
 sed -i 's/user.*=.*nobody/user = www/g;s/group.*=.*nobody/group = www/g' www.conf
 
-exit 100
 
 echo -e "download nginx ...\n"
 wget $wget_cnf  $nginx_url && tar -xf nginx*tar.gz && rm -rf nginx*tar.gz && nginx_name=`ls | grep nginx`
