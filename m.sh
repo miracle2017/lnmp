@@ -34,7 +34,9 @@ mysql_cnf="bin/mysqld --initialize-insecure --user=mysql --basedir=$install_dir/
 $mysql_cnf
 cd support-files
 cp mysql.server $mysql_ver
+chmod +x $mysql_ver
 sed -i "s/basedir=*/basedir=$install_dir\/$mysql_ver/;s/datadir=*/datadir=$install_dir\/$mysql_ver\/data/" $mysql_ver
 mv $mysql_ver /etc/init.d/
+
 echo -e "\nmysql install complete"
 
