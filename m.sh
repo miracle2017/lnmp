@@ -6,7 +6,7 @@ echo $init_dir
 install_dir=/usr/local
 wget_cnf=" -c -t 1000 "
 
-read -p "welcome来到一键安装$0; 按下任意键开始..." action
+read -p "welcome来到一键安装mysql; 按下任意键开始..." action
 
 #check wget command is exist?
 if ! command -v wget; then
@@ -35,7 +35,7 @@ $mysql_cnf
 cd support-files
 cp mysql.server ./$mysql_ver
 chmod +x $mysql_ver
-sed -i "s/basedir=*/basedir=$install_dir\/$mysql_ver/;s/datadir=*/datadir=$install_dir\/$mysql_ver\/data/" $mysql_ver
+sed -i "s|basedir=*|basedir=$install_dir/$mysql_ver|;s|datadir=*|datadir=$install_dir/$mysql_ver/data|"  $mysql_ver
 mv $mysql_ver /etc/init.d/
 
 echo -e "\nmysql install complete"

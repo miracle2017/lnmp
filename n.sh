@@ -6,7 +6,7 @@ echo $init_dir
 install_dir=/usr/local
 wget_cnf=" -c -t 1000 "
 
-read -p "welcome来到一键安装$0; 按下任意键开始..." action
+read -p "welcome来到一键安装nginx; 按下任意键开始..." action
 
 #check wget command is exist?
 if ! command -v wget; then
