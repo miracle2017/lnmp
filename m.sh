@@ -30,7 +30,7 @@ mysql_ver=`echo $mysql_name | grep -P 'mysql[0-9\.-]*' -o | sed 's/\.[0-9]*-//g'
 cd $init_dir
 mv $mysql_name  $install_dir/$mysql_ver
 cd $install_dir/$mysql_ver
-mysql_cnf="bin/mysqld --initialize-insecure --user=mysql --basedir=$install_dir/$mysql_name --datadir=$install_dir/$mysql_name/data"
+mysql_cnf="bin/mysqld --initialize-insecure --user=mysql --basedir=$install_dir/$mysql_ver --datadir=$install_dir/$mysql_ver/data"
 $mysql_cnf
 cd support-files
 cp mysql.server $mysql_ver
