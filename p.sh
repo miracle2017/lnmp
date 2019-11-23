@@ -34,6 +34,7 @@ php_url="https://www.php.net/distributions/php-7.3.11.tar.gz"
 cd $init_dir
 wget $wget_cnf $php_url && tar -xf php*tar.gz && rm -rf php*tar.gz && php_name=`ls | grep php`
 download_php_dependence
+echo thisis$init_dir/$php_name
 cd $init_dir/$php_name
 php_cnf="./configure --prefix=$install_dir/$php_name --with-config-file-path=$install_dir/$php_name/etc --enable-fpm --enable-mbstring --enable-pdo --with-curl --disable-debug --disable-rpath --enable-inline-optimization --with-bz2  --enable-zip --without-libzip --enable-sockets --enable-sysvsem --enable-sysvshm --enable-pcntl --enable-mbregex --with-mhash --enable-zip --with-pcre-regex --with-mysqli --with-gd --with-jpeg-dir --with-freetype-dir --enable-calendar"
 $php_cnf && make && make install && echo "php install completed"
