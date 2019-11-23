@@ -26,9 +26,15 @@ fi
 mysql_url="https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.28-linux-glibc2.12-x86_64.tar.gz"
 wget $wget_cnf $mysql_url && tar -xf mysql*tar.gz && rm -rf mysql*tar.gz && mysql_name=`ls | grep mysql`
 yum -y install libaio*
+mysql_ver=`echo $mysql_name | grep -P 'mysql[0-9\.-]*' -o | sed 's/\.[0-9]*-//g'`
 cd $init_dir
-mysql_name=`ls | grep mysql`
-mv $mysql_name  $install_dir
-cd $install_dir/$mysql_name
+mv $mysql_name  $install_dir/$mysql_ver
+cd $install_dir/$mysql_ver
 mysql_cnf="bin/mysqld --initialize-insecure --user=mysql --basedir=$install_dir/$mysql_name --datadir=$install_dir/$mysql_name/data"
 $mysql_cnf
+cd support-files
+cp mysql.server $mysql_ver
+sed -i "s/basedir=*/basedir=$install_dir\/$mysql_ver/;s/datadir=*/datadir=$install_dir\/$mysql_ver\/data/" $mysql_ver
+mv $mysql_ver /etc/init.d/
+echo -e "\nmysql install complete"
+
