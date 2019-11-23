@@ -40,4 +40,4 @@ wget $wget_cnf  $nginx_url && tar -xf nginx*tar.gz && rm -rf nginx*tar.gz && ngi
 download_nginx_dependence
 nginx_cnf="./configure --prefix=/usr/local/$nginx_name --user=www --group=www --with-http_ssl_module --with-http_flv_module --with-http_stub_status_module --with-select_module --with-poll_module --with-pcre=$init_dir/$pcre_name --with-zlib=$init_dir/$zlib_name --with-openssl=$init_dir/$openssl_name"
 cd $init_dir/$nginx_name
-$nginx_cnf && make && make install && echo "nginx install completed"
+$nginx_cnf && make && make install && echo -e "\nnginx install completed"
