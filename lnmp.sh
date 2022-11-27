@@ -29,9 +29,9 @@ nginx_url="https://nginx.org/download/nginx-1.16.1.tar.gz"
 
 function download_nginx_dependence(){
     echo -e "download nginx dependence..."
-    pcre_url="https://ftp.pcre.org/pub/pcre/pcre-8.43.tar.gz"
-    zlib_url="http://zlib.net/zlib-1.2.11.tar.gz"
-    openssl_url="https://www.openssl.org/source/openssl-1.1.0l.tar.gz"
+    pcre_url="https://ftp.exim.org/pub/pcre/pcre-8.43.tar.gz"
+    zlib_url="http://zlib.net/fossils/zlib-1.2.11.tar.gz"
+    openssl_url="https://ftp.openssl.org/source/old/1.1.0/openssl-1.1.0l.tar.gz"
     cd $init_dir
     wget -q $wget_cnf $pcre_url && tar -xf pcre*.tar.gz && rm -rf pcre*.tar.gz && pcre_name=`ls | grep pcre`
     wget -q $wget_cnf $zlib_url && tar -xf zlib*.tar.gz && rm -rf zlib*.tar.gz && zlib_name=`ls | grep zlib`
